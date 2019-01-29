@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
+import { WeatherData } from '../shared/interfaces/weather-data';
+import { Weather } from '../shared/interfaces/weather';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,22 @@ export class WeatherService {
 
   public searchWeatherData(cityName: string): Observable<any> {
     return this.http
-      .get(`${this.URL}${cityName}$APPID=${this.KEY}${this.UNITS}`)
-      .pipe(tap(data => console.log(JSON.stringify(data))));
+      .get<WeatherData>(`${this.URL}${cityName}$APPID=${this.KEY}${this.UNITS}`)
+      .pipe(
+        map(data => this.transformWeatherData(data)),
+        tap(data => console.log(JSON.stringify(data)))
+      );
+  }
+
+  private transformWeatherData(data: WeatherData): Weather {
+    return {
+      name: data.name,
+      country: data.sys.country,
+      image: `http://openweathermap.org/img/${data.weather[0].icon}.png`,
+      description: data.weather[0].description,
+      temperature: data.main.temp,
+      lat: data.coord.lat,
+      lon: data.coord.lon
+    };
   }
 }
