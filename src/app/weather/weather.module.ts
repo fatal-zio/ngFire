@@ -7,6 +7,7 @@ import { WeatherItemComponent } from './weather-item/weather-item.component';
 import { WeatherSearchComponent } from './weather-search/weather-search.component';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,12 @@ import { MaterialModule } from '../shared/material.module';
     WeatherItemComponent,
     WeatherSearchComponent
   ],
-  imports: [CommonModule, SharedModule, MaterialModule, WeatherRoutingModule],
+  imports: [
+    CoreModule,
+    SharedModule,
+    MaterialModule,
+    WeatherRoutingModule
+  ],
   exports: [WeatherViewComponent, WeatherItemComponent, WeatherSearchComponent]
 })
 export class WeatherModule {}

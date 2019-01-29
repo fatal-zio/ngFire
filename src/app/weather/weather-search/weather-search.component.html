@@ -1,3 +1,18 @@
-<p>
-  weather-search works!
-</p>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input
+      matInput
+      placeholder="Search cities"
+      name="query"
+      [(ngModel)]="query"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+  </mat-form-field>
+  <div class="button-row" style="margin-left: 10px;">
+    <button mat-raised-button color="primary" (click)="search(query)">
+      Submit
+    </button>
+  </div>
+</form>
