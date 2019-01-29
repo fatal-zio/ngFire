@@ -17,7 +17,7 @@ export class WeatherService {
 
   public searchWeatherData(cityName: string): Observable<any> {
     return this.http
-      .get<WeatherData>(`${this.URL}${cityName}$APPID=${this.KEY}${this.UNITS}`)
+      .get<WeatherData>(`${this.URL}${cityName}&APPID=${this.KEY}${this.UNITS}`)
       .pipe(
         map(data => this.transformWeatherData(data)),
         tap(data => console.log(JSON.stringify(data)))
