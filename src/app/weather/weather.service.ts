@@ -9,7 +9,7 @@ import { Weather } from '../shared/interfaces/weather';
   providedIn: 'root'
 })
 export class WeatherService {
-  private URL = 'http://api.openweathermap.org/data/2.5/weather?q=';
+  private URL = 'https://api.openweathermap.org/data/2.5/weather?q=';
   private KEY = '199401f347f6477b021f475aa3c3b2d1';
   private UNITS = '&units=metric';
 
