@@ -13,7 +13,7 @@ export class ErrorService implements ErrorHandler {
       // Server or connection error happened
       if (!navigator.onLine) {
         // Handle offline error
-        this.snackBar.open(error.message, 'Dismiss Offline Error!');
+        this.snackBar.open(error.message, 'Offline Error!');
       } else {
         const errorCode = error.status;
         const errorType = this.resolveErrorCode(errorCode);
@@ -23,12 +23,12 @@ export class ErrorService implements ErrorHandler {
 
         this.snackBar.open(
           errorMessage,
-          `Dismiss ${errorCode} : ${errorType}!`
+          `${errorCode} : ${errorType}!`
         );
       }
     } else {
       // Handle Client Error (Angular Error, ReferenceError...)
-      this.snackBar.open(error.message, 'Dismiss!');
+      this.snackBar.open(error.message, 'Error!');
     }
 
     console.log(error);

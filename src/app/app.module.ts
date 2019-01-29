@@ -21,7 +21,7 @@ import { ErrorService } from './shared/error.service';
     CoreModule,
     SharedModule
   ],
-  providers: [,
+  providers: [
     {
       provide: ErrorHandler,
       useClass: ErrorService
