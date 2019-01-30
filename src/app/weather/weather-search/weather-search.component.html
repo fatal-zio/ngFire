@@ -12,4 +12,6 @@
   </div>
 </form>
 
-{{ weather?.name }} | {{ weather?.temperature }} | {{ weather?.description }}
+<ngx-auth-firebaseui [guestEnabled]="true" [providers]="[providers.Google]">
+
+</ngx-auth-firebaseui>

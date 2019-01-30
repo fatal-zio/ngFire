@@ -8,6 +8,7 @@ import { WeatherSearchComponent } from './weather-search/weather-search.componen
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
 import { CoreModule } from '../core/core.module';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CoreModule } from '../core/core.module';
     CoreModule,
     SharedModule,
     MaterialModule,
-    WeatherRoutingModule
+    WeatherRoutingModule,
+    NgxAuthFirebaseUIModule
   ],
   exports: [WeatherViewComponent, WeatherItemComponent, WeatherSearchComponent]
 })
