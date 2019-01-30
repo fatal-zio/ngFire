@@ -11,13 +11,13 @@
     <mat-nav-list>
       <a
         mat-list-item
-        [routerLink]="['/']"
+        [routerLink]="['/weather']"
         routerLinkActive="router-link-active"
         >Home</a
       >
       <a
         mat-list-item
-        [routerLink]="['/cities']"
+        [routerLink]="['/user/cities']"
         routerLinkActive="router-link-active"
         >Saved Cities</a
       >
@@ -34,7 +34,30 @@
       >
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>ngfire</span>
+      <span>Weather Map</span>
+      <span class="spacer"></span>
+      <span>
+        <a
+          *ngIf="!(authService.user | async)?.uid"
+          class="bg-color"
+          [routerLink]="['/user/login']"
+          routerLinkActive="router-link-active"
+          >Login</a
+        >
+        <a
+          *ngIf="(authService.user | async)?.uid"
+          class="bg-color"
+          [routerLink]="['/user/profile']"
+          routerLinkActive="router-link-active"
+          >Profile</a
+        >
+        <a
+          *ngIf="(authService.user | async)?.uid"
+          class="bg-color"
+          (click)="authService.logout()"
+          >Logout</a
+        >
+      </span>
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
