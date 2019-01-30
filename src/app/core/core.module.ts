@@ -4,10 +4,11 @@ import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
 import { ToolbarComponent } from '../ui/toolbar/toolbar.component';
 import { RouterModule } from '@angular/router';
+import { FirebaseModule } from './firebase.module';
 
 @NgModule({
   declarations: [ToolbarComponent],
-  imports: [CommonModule, SharedModule, MaterialModule, RouterModule],
+  imports: [CommonModule, SharedModule, MaterialModule, RouterModule, FirebaseModule],
   exports: [ToolbarComponent, MaterialModule]
 })
 export class CoreModule {}
