@@ -10,6 +10,10 @@ const routes: Routes = [
   {
     path: 'weather',
     loadChildren: './weather/weather.module#WeatherModule'
+  },
+  {
+    path: 'user',
+    loadChildren: './user/user.module#UserModule'
   }
 ];
 
