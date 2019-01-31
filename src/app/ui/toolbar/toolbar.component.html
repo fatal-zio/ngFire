@@ -20,7 +20,10 @@
         *ngIf="(authService.user$ | async)?.uid"
         class="menu-link"
         mat-list-item
-        [routerLink]="['/user/cities', (authService.user$ | async)?.uid]"
+        [routerLink]="[
+          '/user/cities',
+          (authService.user$ | async)?.uid || 'all'
+        ]"
         routerLinkActive="router-link-active"
         >Saved Cities</a
       >

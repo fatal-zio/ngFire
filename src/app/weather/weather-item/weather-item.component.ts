@@ -5,6 +5,7 @@ import { AuthService } from '../../user/auth.service';
 import { FirebaseService } from '../../shared/firebase.service';
 import { MatSnackBar } from '@angular/material';
 import { User } from '../../shared/interfaces/user';
+import { City } from '../../shared/interfaces/city';
 
 @Component({
   selector: 'app-weather-item',
@@ -29,6 +30,17 @@ export class WeatherItemComponent implements OnInit {
   ngOnInit() {}
 
   public addCity(weather: Weather) {
+    const city: City = {
+      name: this.weather.name,
+      country: this.weather.country,
+      description: this.weather.description,
+      temperature: this.weather.temperature,
+      lat: this.weather.lat,
+      lon: this.weather.lon
+    };
 
+    this.firebaseService.addCity(this.user$.uid, city).then(res => {
+      this.snackBar.open('City saved successfully!', 'OK', { duration: 5000 });
+    });
   }
 }
