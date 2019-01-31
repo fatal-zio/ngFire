@@ -22,12 +22,17 @@ export class SavedCitiesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const param = this.route.snapshot.paramMap.get('id');
-    if (param) {
-      console.log(param);
-      const id = param;
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      console.log(id);
+      this.getCities(id);
     }
   }
 
-
+  public getCities(id: string) {
+    this.firebaseService.getUserCities(id).subscribe(cities => {
+      console.log(cities);
+      this.cities = cities;
+    });
+  }
 }
