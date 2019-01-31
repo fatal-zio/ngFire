@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { City } from '../../shared/interfaces/city';
 import { FirebaseService } from 'src/app/shared/firebase.service';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-saved-cities',
@@ -17,7 +18,8 @@ export class SavedCitiesComponent implements OnInit {
 
   constructor(
     private firebaseService: FirebaseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -39,6 +41,11 @@ export class SavedCitiesComponent implements OnInit {
     console.log(newCity);
     this.firebaseService.updateCity(this.userId, this.city.id, newCity);
     this.city = {};
+  }
+
+  public deleteCity(cityId: string) {
+    this.firebaseService.deleteCity(this.userId, cityId);
+    this.snackBar.open('City deleted.', 'OK', { duration: 3000 });
   }
 
   public updateCity(city: any): void {

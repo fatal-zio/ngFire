@@ -44,6 +44,10 @@ export class FirebaseService {
     );
   }
 
+  public deleteCity(userId: string, cityId: string) {
+    return this.getCity(userId, cityId).delete();
+  }
+
   public updateCity(userId: string, cityId: string, weather: any) {
     const newCity = {
       weather,
