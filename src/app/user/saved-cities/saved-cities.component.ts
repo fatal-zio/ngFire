@@ -25,20 +25,17 @@ export class SavedCitiesComponent implements OnInit {
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      console.log(id);
       this.getCities(id);
     }
   }
 
   public getCities(id: string): void {
     this.firebaseService.getUserCities(id).subscribe(cities => {
-      console.log(cities);
       this.cities = cities;
     });
   }
 
   public saveCityUpdate(newCity: City) {
-    console.log(newCity);
     this.firebaseService.updateCity(this.userId, this.city.id, newCity);
     this.city = {};
   }

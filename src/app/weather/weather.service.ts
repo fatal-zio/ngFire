@@ -19,8 +19,7 @@ export class WeatherService {
     return this.http
       .get<WeatherData>(`${this.URL}${cityName}&APPID=${this.KEY}${this.UNITS}`)
       .pipe(
-        map(data => this.transformWeatherData(data)),
-        tap(data => console.log(JSON.stringify(data)))
+        map(data => this.transformWeatherData(data))
       );
   }
 
