@@ -1,3 +1,8 @@
-<p>
-  login works!
-</p>
+<div fxLayout="row" fxLayoutAlign="space-around start" class="top-container">
+  <ngx-auth-firebaseui
+    [guestEnabled]="true"
+    [providers]="[providers.Google]"
+    (onSuccess)="success($event)"
+  >
+  </ngx-auth-firebaseui>
+</div>
