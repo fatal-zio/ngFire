@@ -35,6 +35,12 @@ export class SavedCitiesComponent implements OnInit {
     });
   }
 
+  public saveCityUpdate(newCity: City) {
+    console.log(newCity);
+    this.firebaseService.updateCity(this.userId, this.city.id, newCity);
+    this.city = {};
+  }
+
   public updateCity(city: any): void {
     this.city.name = city.weather.name;
     this.city.description = city.weather.description;

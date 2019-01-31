@@ -25,8 +25,8 @@
           [(ngModel)]="city.temperature"
         />
       </mat-form-field>
-      <div *ngIf="updateForm" class="button-row" style="margin-left: 10px;">
-        <button mat-raised-button color="primary">Update</button>
+      <div *ngIf="updateForm" class="button-row" style="margin-left: 10px">
+        <button mat-raised-button (click)="saveCityUpdate(city)" color="primary">Update</button>
       </div>
     </form>
   </div>

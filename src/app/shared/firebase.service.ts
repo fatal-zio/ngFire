@@ -6,6 +6,7 @@ import {
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { City } from './interfaces/city';
+import { Weather } from './interfaces/weather';
 
 @Injectable({
   providedIn: 'root'
@@ -41,5 +42,17 @@ export class FirebaseService {
         })
       )
     );
+  }
+
+  public updateCity(userId: string, cityId: string, weather: any) {
+    const newCity = {
+      weather,
+      time: new Date()
+    };
+    return this.getCity(userId, cityId).set(newCity);
+  }
+
+  private getCity(userId: string, cityId: string) {
+    return this.afs.doc(`users/${userId}/cities/${cityId}`);
   }
 }
