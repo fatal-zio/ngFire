@@ -21,7 +21,7 @@
     </mat-card-content>
     <mat-card-actions align="center">
       <button mat-raised-button color="primary" (click)="addCity(weather)" [disabled]="!this.user$">SAVE</button>
-      <mat-hint *ngIf="!this.user$">Login to application in order to save forecasts.</mat-hint>
+      <mat-hint *ngIf="!this.user$">Please log in to save forecasts.</mat-hint>
     </mat-card-actions>
   </mat-card>
 </div>
