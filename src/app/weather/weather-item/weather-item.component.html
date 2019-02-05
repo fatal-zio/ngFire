@@ -20,7 +20,8 @@
       <p>{{ weather.description }}</p>
     </mat-card-content>
     <mat-card-actions align="center">
-      <button mat-raised-button color="primary" (click)="addCity(weather)">SAVE</button>
+      <button mat-raised-button color="primary" (click)="addCity(weather)" [disabled]="!this.user$">SAVE</button>
     </mat-card-actions>
+    <mat-hint *ngIf="!this.user$">Login to application in order to save forecasts.</mat-hint>
   </mat-card>
 </div>
